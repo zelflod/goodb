@@ -60,8 +60,4 @@ namespace TMApp {
     std::string& TMApp::getUsername(){
         return this->_user->getUsername();
     }
-
-    int TMApp::getUserId(){
-        return 10;
-    }
 }

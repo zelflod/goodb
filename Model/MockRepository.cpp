@@ -52,14 +52,12 @@ void MockRepository::insertTask(TMApp::Task *pTask, int folderId){
     pTask->id = tasksCount;
     pTask->folderId = folderId;
     tasks[tasksCount] = *pTask;
-    ++tasksCount;
+//    ++tasksCount;
 }
 
 void MockRepository::removeTask(int taskId) {
     tasks.erase(taskId);
 }
-
-
 
 
 TMApp::Tag* MockRepository::getTagsByName(std::string name, int projectId) {

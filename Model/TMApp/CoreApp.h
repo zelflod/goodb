@@ -8,7 +8,6 @@
 class CoreApp {
 public:
     virtual std::string& getUsername() = 0;
-    virtual int getUserId() = 0;
 
     virtual Repository* getRepository() = 0;
 };

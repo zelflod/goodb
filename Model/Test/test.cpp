@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 
-#include "lib/catch.hpp"
+#include "libs/catch.hpp"
 #include "Model/TMApp/TMApp.h"
 #include "Model/MockRepository.h"
 

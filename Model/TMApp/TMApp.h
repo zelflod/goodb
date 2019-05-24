@@ -18,6 +18,7 @@ namespace TMApp{
     class TMApp : public CoreApp {
     public:
         TMApp();
+        ~TMApp(){};
 
         TMApp(Repository* _repository, Folder& f, Task& t,Project& p, Tag& _tags);
 
@@ -35,7 +36,6 @@ namespace TMApp{
 
         Repository* getRepository();
         std::string& getUsername();
-        int getUserId();
 
         Project projects;
         Tag tags;

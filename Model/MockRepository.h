@@ -17,6 +17,10 @@
 #include "Folder.h"
 #include "Tag.h"
 
+
+/**
+ * In-memory database
+ */
 class MockRepository : public Repository {
 private:
     std::unordered_map<int, TMApp::Task> tasks;
