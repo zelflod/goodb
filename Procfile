@@ -1,1 +1,1 @@
-web: node ./Client/tm-app/server.js
+web: ./build/server_service
