@@ -27,6 +27,6 @@ install_catch(){
     wget https://github.com/catchorg/Catch2/releases/download/v2.7.2/catch.hpp
 }
 
-#mkdir -p "$libDir"
-#install_cpprestsdk
+mkdir -p "$libDir"
+install_cpprestsdk
 install_catch

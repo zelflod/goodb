@@ -29,7 +29,9 @@ public:
     void handleTrace(http_request message) override;
     void handleConnect(http_request message) override;
     void handleMerge(http_request message) override;
-    void initRestOpHandlers() override;    
+    void initRestOpHandlers() override;
+    web::json::value taskToJson(TMApp::Task* task);
+    TMApp::Task jsonToTask( web::json::value &);
 
 private:
     static json::value responseNotImpl(const http::method & method);

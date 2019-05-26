@@ -1,6 +1,3 @@
-/**
- * Project OrganizeMe
- */
 
 
 #ifndef _TASK_H
@@ -72,6 +69,12 @@ namespace TMApp {
         void remove(int taskId);
 
         int id;
+
+        bool operator < (const Task& str) const
+        {
+            return (dueDate < str.dueDate);
+        }
+
     private:
         CoreApp* app;
     };

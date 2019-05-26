@@ -12,9 +12,19 @@ using namespace cfx;
 int main(int argc, const char * argv[]) {
     InterruptHandler::hookSIGINT();
 
+    std::string address = "host_auto_ip4";
+    std::string port = "9090";
+    if (argc >= 3) {
+        address = argv[1];
+        port = argv[2];
+    }
+
     AppServer server;
-    server.setEndpoint("http://host_auto_ip4:9090/api");
-    
+//    server.setEndpoint("http://host_auto_ip4:9090/api");
+    std::string endpoint = "http://" + address + ":"+ port +"/api";
+    server.setEndpoint(endpoint);
+
+
     try {
         // wait for server initialization...
         server.accept().wait();
