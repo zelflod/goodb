@@ -1,1 +1,1 @@
-web: ./build/server_service
+web: ./build/server_service host_auto_ip4 $PORT
