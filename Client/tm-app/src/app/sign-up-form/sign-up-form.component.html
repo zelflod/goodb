@@ -1,0 +1,84 @@
+<h1 class="page-header">Регистрация</h1>
+
+<div class="jumbotron">
+  <div *ngIf="formErrors" class="alert alert-danger">
+    <strong>
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      Произошла ошибка при попытке создать аккаунт в системе.
+    </strong>
+
+    <ul>
+      <li *ngFor="let error of formErrors">{{ error }}</li>
+    </ul>
+  </div>
+
+
+  <form class="form-horizontal" [formGroup]="form" (ngSubmit)="signUpUser()">
+  
+    <div class="form-group has-feedback" [ngClass]="formUtils.fieldClassForErrorOrSuccess('name')">
+      <label for="name" class="col-sm-4 control-label">Имя</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <span class="glyphicon form-control-feedback" [ngClass]="formUtils.iconClassForErrorOrSuccess('name')"></span>
+
+        <div *ngIf="formUtils.showFieldError('name')" class="text-danger">
+          <div *ngIf="form.get('name').errors.required">имя обязательно</div>
+          <div *ngIf="form.get('name').errors.minlength">имя должно быть не менее 5 символов</div>
+          <div *ngIf="form.get('name').errors.maxlength">имя не должно превышать 100 символов</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group has-feedback" [ngClass]="formUtils.fieldClassForErrorOrSuccess('email')">
+      <label for="email" class="col-sm-4 control-label">Email</label>
+      <div class="col-sm-4">
+        <input type="email" class="form-control" id="email" formControlName="email">
+        <span class="glyphicon form-control-feedback" [ngClass]="formUtils.iconClassForErrorOrSuccess('email')"></span>
+        
+        <div *ngIf="formUtils.showFieldError('email')" class="text-danger">
+          <div *ngIf="form.get('email').errors.required">Требуется email</div>
+          <div *ngIf="form.get('email').errors.email">введенный вами адрес электронной почты недействителен</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group has-feedback" [ngClass]="formUtils.fieldClassForErrorOrSuccess('password')">
+      <label for="password" class="col-sm-4 control-label">Пароль</label>
+      <div class="col-sm-4">
+        <input type="password" class="form-control" id="password" formControlName="password">
+        <span class="glyphicon form-control-feedback" [ngClass]="formUtils.iconClassForErrorOrSuccess('password')"></span>
+        
+        <div *ngIf="formUtils.showFieldError('password')" class="text-danger">
+          <div *ngIf="form.get('password').errors.required">требуется пароль</div>
+          <div *ngIf="form.get('password').errors.minlength">пароль должен быть не менее 8 символов</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group has-feedback" [ngClass]="formUtils.fieldClassForErrorOrSuccess('passwordConfirmation')">
+      <label for="passwordConfirmation" class="col-sm-4 control-label">Подтверждение пароля</label>
+      <div class="col-sm-4">
+        <input type="password" class="form-control" id="passwordConfirmation" formControlName="passwordConfirmation">
+        <span class="glyphicon form-control-feedback" [ngClass]="formUtils.iconClassForErrorOrSuccess('passwordConfirmation')"></span>
+        
+        <div *ngIf="formUtils.showFieldError('passwordConfirmation')" class="text-danger">
+          <div *ngIf="form.get('passwordConfirmation').errors.required">требуется подтверждение пароля</div>
+          <div *ngIf="form.get('passwordConfirmation').errors.mismatch">пароль и подтверждение пароля не совпадают</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-8">
+        <button [disabled]="form.invalid || submitted" type="submit" class="btn btn-primary">Создать аккаунт</button>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-8">
+        Если у вас уже есть аккаунт,
+        <a routerLink="/sign-in">нажмите здесь, чтобы войти</a>
+      </div>
+    </div>
+  </form>
+</div>

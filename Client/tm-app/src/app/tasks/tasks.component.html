@@ -1,0 +1,42 @@
+<h1 class="page-header">Список задач</h1>
+
+<div class="well">
+  <form (ngSubmit)="createTask()">
+    <div class="row">
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="newTask.title" name="title" placeholder="Введите новую задачу">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-success" type="submit">
+          Добавить задачу
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Название</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td>{{ task.id }}</td>
+      <td>{{ task.title }}</td>
+      <td>
+        <a [routerLink]="['/tasks', task.id]" class="btn btn-info" style="margin-right: 7px">
+          <span class="glyphicon glyphicon-info-sign"></span>
+          детали
+        </a>
+        <button class="btn btn-danger" (click)="deleteTask(task)">
+          <span class="glyphicon glyphicon-trash"></span>
+          удалить
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
